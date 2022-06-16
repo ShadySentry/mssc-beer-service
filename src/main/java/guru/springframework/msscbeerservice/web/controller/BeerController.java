@@ -1,4 +1,4 @@
-package guru.springframework.msscbeerservice.controller;
+package guru.springframework.msscbeerservice.web.controller;
 
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import org.springframework.http.HttpStatus;
@@ -29,3 +29,4 @@ public class BeerController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
+
