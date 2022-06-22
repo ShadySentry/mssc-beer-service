@@ -140,3 +140,5 @@ Desktop.ini
 .eslintcache
 /.idea/
 /target/generated-sources/annotations/
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
