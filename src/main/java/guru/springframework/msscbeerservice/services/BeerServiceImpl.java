@@ -1,13 +1,11 @@
 package guru.springframework.msscbeerservice.services;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import guru.springframework.msscbeerservice.domen.Beer;
 import guru.springframework.msscbeerservice.repositories.BeerRepository;
 import guru.springframework.msscbeerservice.web.controller.NotFoundException;
 import guru.springframework.msscbeerservice.web.mapper.BeerMapper;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -37,7 +35,7 @@ public class BeerServiceImpl implements BeerService {
         Beer beer = beerRepository.findById(beerId).orElseThrow(NotFoundException::new);
 
         beer.setBeerName(beerDto.getBeerName());
-        beer.setBerStyle(beerDto.getBeerStyle().name());
+        beer.setBeerStyle(beerDto.getBeerStyle().name());
         beer.setPrice(beerDto.getPrice());
         beer.setUpc(beerDto.getUpc());
 
