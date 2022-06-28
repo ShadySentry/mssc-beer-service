@@ -142,3 +142,12 @@ Desktop.ini
 /target/generated-sources/annotations/
 target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+/target/classes/__schema._sql
+/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+/target/classes/data.sql
+/target/classes/ehcache.xml
+/target/surefire-reports/guru.springframework.msscbeerservice.MsscBeerServiceApplicationTests.txt
+/target/surefire-reports/guru.springframework.msscbeerservice.web.controller.BeerControllerTest.txt
+/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+/target/surefire-reports/TEST-guru.springframework.msscbeerservice.MsscBeerServiceApplicationTests.xml
+/target/surefire-reports/TEST-guru.springframework.msscbeerservice.web.controller.BeerControllerTest.xml

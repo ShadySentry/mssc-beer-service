@@ -58,8 +58,6 @@ public class BeerServiceImpl implements BeerService {
                             beerPage.getPageable().getPageSize()),
                     beerPage.getTotalElements());
         }
-
-
         return beerPagedList;
     }
 
@@ -78,6 +76,25 @@ public class BeerServiceImpl implements BeerService {
             );
         }
         return  dto;
+    }
+
+    @Cacheable(cacheNames = "beerUpcCache")
+    @Override
+    public BeerDto getByUpc(String upc, Boolean showInventoryOnHand){
+
+        BeerDto dto;
+
+        if(showInventoryOnHand){
+            dto =beerMapper.beerToBeerDtoWithInventory(
+                    beerRepository.findByUpc(upc).orElseThrow(NotFoundException::new)
+            );
+        }else{
+            dto =beerMapper.beerToBeerDto(
+                    beerRepository.findByUpc(upc).orElseThrow(NotFoundException::new)
+            );
+        }
+
+        return dto;
     }
 
     @Override

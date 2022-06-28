@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID> {
@@ -18,4 +19,6 @@ public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID> {
     Page<Beer> findAllByBeerNameAndBeerStyle(String beerName, BeerStyleEnum beerStyle, Pageable pageable);
 
     List<Beer> findAll();
+
+    Optional<Beer> findByUpc(String upc);
 }
