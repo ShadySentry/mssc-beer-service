@@ -1,0 +1,17 @@
+CREATE TABLE beer
+(
+    id                 VARCHAR NOT NULL,
+    version            BIGINT,
+    created_date        TIMESTAMP,
+    last_modified_date TIMESTAMP,
+    beer_name          VARCHAR(255),
+    beer_style          VARCHAR(255),
+    upc                VARCHAR(255),
+    price              DECIMAL,
+    min_on_hand        INT,
+    quantity_to_brew   INT,
+    CONSTRAINT pk_beer PRIMARY KEY (id)
+);
+
+ALTER TABLE beer
+    ADD CONSTRAINT uc_beer_upc UNIQUE (upc);
