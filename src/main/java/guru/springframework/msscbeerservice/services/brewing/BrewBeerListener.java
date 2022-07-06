@@ -12,6 +12,8 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 @Slf4j
 public class BrewBeerListener {
@@ -24,6 +26,7 @@ public class BrewBeerListener {
         this.jmsTemplate = jmsTemplate;
     }
 
+    @Transactional
     @JmsListener(destination = JmsConfig.BREWING_REQUEST_QUEUE)
     public void listen(BrewBeerEvent event){
         BeerDto beerDto = event.getBeerDto();
