@@ -20,7 +20,6 @@ services:
     ports:
       - 8090:8080
 
-
   activemq:
     image: vromero/activemq-artemis
     restart: always
