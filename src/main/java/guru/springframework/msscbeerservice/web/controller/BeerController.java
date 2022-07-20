@@ -67,15 +67,11 @@ public class BeerController {
 
     @PostMapping("beer")
     public ResponseEntity saveNewBeer(@RequestBody @Validated BeerDto beerDto) {
-        //todo impl
-
         return new ResponseEntity<>(beerService.saveNewBeer(beerDto), HttpStatus.CREATED);
     }
 
     @PutMapping("beer/{beerId}")
     public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody @Validated BeerDto beerDto) {
-        //todo impl
-
         return new ResponseEntity(beerService.updateBeer(beerId, beerDto), HttpStatus.NO_CONTENT);
     }
 }

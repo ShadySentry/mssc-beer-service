@@ -24,6 +24,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
+		<dependency>
+			<groupId></groupId>
+			<artifactId></artifactId>
+		</dependency>
 
 <!--		<dependency>-->
 <!--			<groupId>javax.xml.bind</groupId>-->
