@@ -4,8 +4,6 @@ import guru.springframework.msscbeerservice.services.invetory.model.BeerInventor
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
