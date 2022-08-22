@@ -2,7 +2,6 @@ package guru.springframework.msscbeerservice.services.invetory;
 
 import guru.springframework.msscbeerservice.services.invetory.model.BeerInventoryDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -19,20 +18,24 @@ import java.util.UUID;
 
 @Profile("!local-discovery")
 @Slf4j
-@ConfigurationProperties(prefix = "sfg.brewery",ignoreInvalidFields = false)
+@ConfigurationProperties(prefix = "sfg.brewery", ignoreInvalidFields = true)
 @Component
-public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService{
-    public static final String INVENTORY_PATH="/api/v1/beer/{beerId}/inventory";
+public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService {
+    public static final String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
     private final RestTemplate restTemplate;
 
     private String beerInventoryServiceHost;
 
-    public void setBeerInventoryServiceHost(String beerInventoryServiceHost){
+    public void setBeerInventoryServiceHost(String beerInventoryServiceHost) {
         this.beerInventoryServiceHost = beerInventoryServiceHost;
     }
 
-    public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplate = restTemplateBuilder.build();
+    public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder,
+                                                @Value("${sfg.brewery.inventoryUser}") String inventoryUser,
+                                                @Value("${sfg.brewery.inventoryPassword}") String inventoryPassword) {
+        this.restTemplate = restTemplateBuilder
+                .basicAuthentication(inventoryUser, inventoryPassword)
+                .build();
     }
 
     @Override
@@ -42,7 +45,7 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
         ResponseEntity<List<BeerInventoryDto>> responseEntity = restTemplate
                 .exchange(beerInventoryServiceHost + INVENTORY_PATH, HttpMethod.GET, null,
                         new ParameterizedTypeReference<List<BeerInventoryDto>>() {
-                        },(Object) beerId);
+                        }, (Object) beerId);
 
         Integer onHand = Objects.requireNonNull(responseEntity.getBody())
                 .stream()
